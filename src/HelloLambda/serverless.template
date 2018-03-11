@@ -25,7 +25,29 @@
           }
         }
       }
-    }
+    },
+
+    "Post" : {
+      "Type" : "AWS::Serverless::Function",
+      "Properties": {
+        "Handler": "HelloLambda::HelloLambda.Functions::Get",
+        "Runtime": "dotnetcore2.0",
+        "CodeUri": "",
+        "MemorySize": 256,
+        "Timeout": 30,
+        "Role": null,
+        "Policies": [ "AWSLambdaBasicExecutionRole" ],
+        "Events": {
+          "PutResource": {
+            "Type": "Api",
+            "Properties": {
+              "Path": "/",
+              "Method": "POST"
+            }
+          }
+        }
+      }
+    }    
 
   },
 

@@ -40,5 +40,19 @@ namespace HelloLambda
 
             return response;
         }
+
+        public APIGatewayProxyResponse Post(APIGatewayProxyRequest request, ILambdaContext context)
+        {
+            context.Logger.LogLine("Post Request\n");
+
+            var response = new APIGatewayProxyResponse
+            {
+                StatusCode = (int)HttpStatusCode.OK,
+                Body = "Received",
+                Headers = new Dictionary<string, string> { { "Content-Type", "text/plain" } }
+            };
+
+            return response;
+        }        
     }
 }
